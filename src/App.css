@@ -1,0 +1,97 @@
+body {
+  background-color: white;
+}
+
+.banner {
+  background-color: blue;
+  color: white;
+}
+
+.banner-text {
+  margin-left: 30px;
+}
+
+.main-container {
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+
+}
+
+.container {
+  background-color: white;
+  justify-content: center;
+  width: 50%;
+  font-weight: normal;
+  margin-left: 50px;
+}
+
+.profile-text {
+  color: gray;
+  font-size: 18px;
+}
+
+.input-label {
+  color: gray;
+  font-size: 12px;
+  margin-top: 12px;
+  margin-bottom: 7px;
+}
+
+input[type=text],
+select {
+  width: 70%;
+  padding: 12px 20px;
+
+  display: inline-block;
+  border: 1px solid rgb(5, 5, 4);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password],
+select {
+  width: 80%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 30%;
+  background-color: #4CAF;
+  color: white;
+  padding: 14px 20px;
+  margin-top: 25px;
+  margin-left: 60px;
+  width: 50%;
+  margin-bottom: 20px;
+  font-size: 20px;
+
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4CAF;
+
+}
+
+.header {
+  font-size: 20;
+
+
+}
+
+#skills {
+  height: 100px;
+}
+
+.error-msg {
+  color: red;
+  font-size: 10px;
+}
