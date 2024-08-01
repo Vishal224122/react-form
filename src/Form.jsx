@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 function Form() {
     const data = { name: "", gender: "", dob: new Date().toISOString().split("T")[0], email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "", }
-    const [inputData, setInputData] = useState(data)
+    const [inputData, setInputData] = useState(data);
     const [formErrors, setFormErrors] = useState({});
 
     function handeleData(e) {
