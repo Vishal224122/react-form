@@ -20,11 +20,11 @@ function Form() {
         if (!inputData.name) {
             errors.name = "Name is required"
         }
-        if (!inputData.currentAddress){
-            errors.currentAddress="Current address is required"
+        if (!inputData.currentAddress) {
+            errors.currentAddress = "Current address is required"
         }
-        if (!inputData.highestEducation){
-            errors.highestEducation="Highest education is required"
+        if (!inputData.highestEducation) {
+            errors.highestEducation = "Highest education is required"
         }
 
         if (!inputData.emailId) {
@@ -81,9 +81,7 @@ function Form() {
                 </div>
                 <div className="form-control">
                     <div className="input-label">Date of birth</div>
-                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} ></DatePicker>
-
-                    {/* <input type="date" placeholder="- -" name="dateOfBirth" value={inputData.dateOfBirth} onChange={handeleData}></input> */}
+                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}></DatePicker>
 
                 </div>
                 <div className="form-control">
@@ -103,7 +101,7 @@ function Form() {
                 <div className="form-control">
                     <div className="input-label">Current address</div>
 
-                    <input type="text" placeholder="abc-12" name="currentAddress" value={inputData.currentAddress} onChange={handeleData}/>
+                    <input type="text" placeholder="abc-12" name="currentAddress" value={inputData.currentAddress} onChange={handeleData} />
                     <div className="error-msg">{formErrors.currentAddress}</div>
 
 

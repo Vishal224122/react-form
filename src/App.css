@@ -37,12 +37,20 @@ body {
 
 .input-label {
   color: gray;
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 12px;
   margin-bottom: 7px;
 }
 
-input[type=text],
+.react-datepicker-wrapper {
+  width: 100%
+}
+
+#datepicker {
+  width: 152
+}
+
+input,
 select {
   width: 70%;
   padding: 12px 20px;
