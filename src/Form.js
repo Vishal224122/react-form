@@ -1,15 +1,13 @@
 import React, { useState } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 function Form() {
-    const data = { name: "", gender: "", dateOfBirth: "", emailId: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "", }
+    const data = { name: "", gender: "", dob: new Date(), email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "", }
     const [inputData, setInputData] = useState(data)
-    const [startDate, setStartDate] = useState(new Date())
-
     const [formErrors, setFormErrors] = useState({});
 
     function handeleData(e) {
-        console.log(e.target)
         setInputData({ ...inputData, [e.target.name]: e.target.value })
         console.log(inputData)
     }
@@ -27,12 +25,12 @@ function Form() {
             errors.highestEducation = "Highest education is required"
         }
 
-        if (!inputData.emailId) {
-            errors.emailId = "Email is required"
-        } else if (!inputData.emailId.match(
+        if (!inputData.email) {
+            errors.email = "Email is required"
+        } else if (!inputData.email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )) {
-            errors.emailId = "Email is not valid"
+            errors.email = "Email is not valid"
         }
 
         setFormErrors(errors);
@@ -44,10 +42,21 @@ function Form() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         if (!validate()) return;
 
 
+        // axios.post("https://httpbin.org/post", inputData)
+        axios.post("/submit", inputData)
+            .then((response) => {
+                console.log(response);
+
+            })
+            .catch((errors) => {
+                console.log(errors);
+            });
+
+
+        console.log(inputData)
     }
 
     return (
@@ -56,7 +65,6 @@ function Form() {
         <div>
             <div className="banner">
                 <h2 className="banner-text">Become a Member</h2>
-
             </div>
 
             <div className="main-container">
@@ -81,30 +89,24 @@ function Form() {
                 </div>
                 <div className="form-control">
                     <div className="input-label">Date of birth</div>
-                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}></DatePicker>
+                    <DatePicker selected={inputData.dob} onChange={(date) => {
+                        setInputData({ ...inputData, dob: date.toISOString().split("T")[0] })
+                    }}></DatePicker>
 
                 </div>
                 <div className="form-control">
                     <div className="input-label">Mobile no.</div>
-
-                    <input type="tel" placeholder="1234567890" name="mobileNo" value={inputData.mobileNo} onChange={handeleData}></input>
-
+                    <input type="tel" placeholder="1234567890" name="mobile" value={inputData.mobile} onChange={handeleData}></input>
                 </div>
                 <div className="form-control">
                     <div className="input-label">Email Id</div>
-
-                    <input type="email" placeholder="abc@gmail.com" name="emailId" value={inputData.emailId} onChange={handeleData}></input>
-                    <div className="error-msg">{formErrors.emailId}</div>
-
-
+                    <input type="email" placeholder="abc@gmail.com" name="email" value={inputData.email} onChange={handeleData}></input>
+                    <div className="error-msg">{formErrors.email}</div>
                 </div>
                 <div className="form-control">
                     <div className="input-label">Current address</div>
-
                     <input type="text" placeholder="abc-12" name="currentAddress" value={inputData.currentAddress} onChange={handeleData} />
                     <div className="error-msg">{formErrors.currentAddress}</div>
-
-
                 </div>
                 <div className="form-control">
                     <div className="input-label">Highest Education</div>
@@ -130,12 +132,6 @@ function Form() {
                 <div>
                     <button type="submit"
                         onClick={handleSubmit}
-                    // onClick={() => {
-                    //     console.log(inputData);
-                    //     save
-                    //     return false;
-                    // }
-                    // }
                     >Submit</button>
                 </div>
 
