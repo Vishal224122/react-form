@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 function Form() {
-    const data = { name: "", gender: "", dob: new Date(), email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "", }
+    const data = { name: "", gender: "", dob: new Date().toISOString().split("T")[0], email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "", }
     const [inputData, setInputData] = useState(data)
     const [formErrors, setFormErrors] = useState({});
 
@@ -46,7 +46,7 @@ function Form() {
 
 
         // axios.post("https://httpbin.org/post", inputData)
-        axios.post("/submit", inputData)
+        axios.post("/submit", { ...inputData, yearOfPassing: Number(inputData.yearOfPassing) })
             .then((response) => {
                 console.log(response);
 
@@ -73,7 +73,6 @@ function Form() {
             <form className="container" onSubmit={handleSubmit}>
                 <div className="header">
                     <h2>Complete Your Profile</h2>
-
                     <div className="profile-text">Submit your detail to create profile</div>
                 </div>
 
@@ -119,7 +118,7 @@ function Form() {
                 <div className="form-control">
                     <div className="input-label">Year of Passing</div>
 
-                    <input type="text" placeholder="- -" name="yearOfPassing" value={inputData.yearOfPassing} onChange={handeleData}></input>
+                    <input type="number" placeholder="- -" name="yearOfPassing" value={inputData.yearOfPassing} onChange={handeleData}></input>
 
                 </div>
                 <div className="form-control">
