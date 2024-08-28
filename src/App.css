@@ -68,7 +68,7 @@ select {
   box-sizing: border-box;
 }
 
-button {
+.button {
   width: 30%;
   background-color: #4CAF;
   color: white;
@@ -84,7 +84,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.button:hover {
   background-color: #4CAF;
 
 }
@@ -102,4 +102,44 @@ button:hover {
 .error-msg {
   color: red;
   font-size: 10px;
+}
+.create_profile{
+  width: 30%;
+  background-color: #4CAF;
+  color: black;
+  padding: 14px 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
+  margin-left: 60px;
+  width: auto;
+  
+  font-size: 20px;
+
+  border: none;
+  border-radius: 23px;
+  cursor: pointer;
+}
+.Reports{
+  width: 30%;
+  background-color: #4CAF;
+  color: black;
+  padding: 14px 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
+  margin-left: 60px;
+  width: auto;
+  
+  font-size: 20px;
+
+  border: none;
+  border-radius: 23px;
+  cursor: pointer;
+  
+}
+.second_container{
+  background-color: blueviolet;
+  color: white;
+
 }

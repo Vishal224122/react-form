@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 import axios from "axios";
 function Form() {
-    const data = { name: "", gender: "", dob: new Date().toISOString().split("T")[0], email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "", }
-    const [inputData, setInputData] = useState(data);
+    const data = { name: "", gender: "", dob: new Date().toISOString().split("T")[0], email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "" }
+    const [inputData, setInputData] = useState(data)
     const [formErrors, setFormErrors] = useState({});
 
     function handeleData(e) {
@@ -41,17 +42,26 @@ function Form() {
 
 
     function handleSubmit(e) {
-        e.preventDefault();
-        if (!validate()) return;
-
+        e.preventDefault(); if (!validate()) return;
+        Swal.fire({
+            title: "success",
+            text: "Form is submited successfully",
+            icon: "success"
+        });
 
         // axios.post("https://httpbin.org/post", inputData)
         axios.post("/submit", { ...inputData, yearOfPassing: Number(inputData.yearOfPassing) })
             .then((response) => {
-                console.log(response);
+                console.log(response)
+
 
             })
             .catch((errors) => {
+                Swal.fire({
+                    title: "error",
+                    text: "Failed to submit form",
+                    icon: "error"
+                });
                 console.log(errors);
             });
 
@@ -60,16 +70,23 @@ function Form() {
     }
 
     return (
-
-
         <div>
-            <div className="banner">
+            {/* <div className="banner">
                 <h2 className="banner-text">Become a Member</h2>
             </div>
 
             <div className="main-container">
                 <h1>Create Profile</h1>
             </div>
+            <div className="second_container">
+                <button type="submit" className="create_profile"
+
+                >Create Profile</button>
+                <button type="submit" className="Reports"
+
+                >Reports</button>
+            </div> */}
+
             <form className="container" onSubmit={handleSubmit}>
                 <div className="header">
                     <h2>Complete Your Profile</h2>
@@ -129,7 +146,7 @@ function Form() {
                 </div>
 
                 <div>
-                    <button type="submit"
+                    <button type="submit" className="button"
                         onClick={handleSubmit}
                     >Submit</button>
                 </div>
