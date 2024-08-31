@@ -31,31 +31,35 @@ function Report() {
         "submission_date": "2024-08-30T08:37:14.153Z"
     }
     ];
-    let didCancel = false;
+    // let didCancel = false;
     useEffect(() => {
        
       
         const fetchData = async () => {
-          if (didCancel) return;
+        //   if (didCancel)
+        //      return;
       
           try {
             const result = await axios.get(url);
-            if (!didCancel) {
+            // if (!didCancel) {
+            //     setReport(result.data)
+            // }
+            if(result!=null)
                 setReport(result.data)
-            }
+            else
+            alert("error in fetching data")
           } catch (error) {
-            if (!didCancel) {
-              // Handle error
-            }
+           console.log(error);
+           
           }
         };
       
         fetchData();
       
-        return () => {
-          didCancel = true;
-        };
-      }, [didCancel]);
+        // return () => {
+        //   didCancel = true;
+        // };
+      }, []);
 
     return (
         <>
