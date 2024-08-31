@@ -31,20 +31,31 @@ function Report() {
         "submission_date": "2024-08-30T08:37:14.153Z"
     }
     ];
-
+    let didCancel = false;
     useEffect(() => {
+       
+      
+        const fetchData = async () => {
+          if (didCancel) return;
+      
+          try {
+            const result = await axios.get(url);
+            if (!didCancel) {
+                setReport(result.data)
+            }
+          } catch (error) {
+            if (!didCancel) {
+              // Handle error
+            }
+          }
+        };
+      
         fetchData();
-    }, [])
-
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(url);
-            if (response != null)
-                setReport(response.data)
-            else
-                alert("error when loading tha data")
-        } catch (error) { }
-    }
+      
+        return () => {
+          didCancel = true;
+        };
+      }, [didCancel]);
 
     return (
         <>
@@ -57,7 +68,7 @@ function Report() {
                         <th>Email iD</th>
                         <th>Gender</th>
                         <th>Address</th>
-                        <th>Dtae of submission</th>
+                        <th>Date of submission</th>
                         <th>Profile ID</th>
                         <th> Education</th>
                         <th>Year Of Passing</th>

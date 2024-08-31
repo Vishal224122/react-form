@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import axios from "axios";
 function Form() {
-    const data = { name: "", gender: "", dob: new Date().toISOString().split("T")[0], email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "" }
+    const data = { name: "", gender: "", dob:"", email: "", currentAddress: "", highestEducation: "", yearOfPassing: "", skills: "" }
     const [inputData, setInputData] = useState(data)
     const [formErrors, setFormErrors] = useState({});
 
@@ -50,7 +50,7 @@ function Form() {
         });
 
         // axios.post("https://httpbin.org/post", inputData)
-        axios.post("/submit", { ...inputData, yearOfPassing: Number(inputData.yearOfPassing) })
+        axios.post("http://localhost:5000/submit", { ...inputData, yearOfPassing: Number(inputData.yearOfPassing) })
             .then((response) => {
                 console.log(response)
 
