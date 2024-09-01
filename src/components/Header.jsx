@@ -7,8 +7,7 @@ import Report from './Report';
 export const Header = () => {
     const [tab, setTab] = useState("create-profile");
 
-
-    return (<div>
+    return (<>
         <div className="banner">
             <h2 className="banner-text">Become a Member</h2>
         </div>
@@ -17,17 +16,10 @@ export const Header = () => {
             <h1>Create Profile</h1>
         </div>
         <div className="second_container">
-            <button type="submit" className="create_profile" onClick={()=>{setTab("create-profile")}}>Create profile</button>
-
-            <button type="submit" className="Reports" onClick={() => { setTab("report") }}>Reports</button>
+            <button className="tab-button" onClick={() => { setTab("create-profile") }}>Create profile</button>
+            <button className="tab-button" onClick={() => { setTab("report") }}>Reports</button>
         </div>
 
-        {tab === "create-profile" ? <Form /> : <Report/>}
-
-
-
-    </div>)
+        {tab === "create-profile" ? <Form /> : <Report />}
+    </>)
 }
-
- 
-

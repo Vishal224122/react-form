@@ -21,7 +21,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   border-radius: 25px;
-  margin-top: -22px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
 }
 
@@ -55,7 +56,6 @@ input,
 select {
   width: 70%;
   padding: 12px 20px;
-
   display: inline-block;
   border: 1px solid rgb(5, 5, 4);
   border-radius: 4px;
@@ -74,12 +74,9 @@ select {
   background-color: #4CAF;
   color: white;
   padding: 14px 20px;
-
   margin-left: 60px;
   width: 50%;
-
   font-size: 20px;
-
   border: none;
   border-radius: 25px;
   cursor: pointer;
@@ -87,13 +84,10 @@ select {
 
 .button:hover {
   background-color: #4CAF;
-
 }
 
 .header {
   font-size: 20;
-
-
 }
 
 #skills {
@@ -105,42 +99,38 @@ select {
   font-size: 10px;
 }
 
-.create_profile {
-  width: 30%;
+.tab-button {
   background-color: #4CAF;
   color: black;
   padding: 14px 20px;
-
   margin-left: 60px;
   width: auto;
-
   font-size: 20px;
-
-  border: none;
   border-radius: 23px;
+  border: none;
   cursor: pointer;
 }
 
-.Reports {
-  width: 30%;
-  background-color: #4CAF;
-  color: black;
-  padding: 14px 20px;
-
-  margin-left: 60px;
-  width: auto;
-
-  font-size: 20px;
-
-  border: none;
-  border-radius: 23px;
-  cursor: pointer;
-
+.tab-button:hover {
+  background-color: #96e2cf;
 }
 
 .second_container {
   background-color: blueviolet;
   color: white;
-  margin-top: -22px;
+  /* margin-top: -22px; */
+}
 
+.table {
+  background-color: gray;
+  color: aliceblue;
+  text-align: center;
+  width: 100%;
+  margin-top: 5px;
+}
+
+table,
+thead {
+  background-color: black;
+  color: aliceblue;
 }

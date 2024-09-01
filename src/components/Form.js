@@ -37,7 +37,7 @@ function Form() {
         setFormErrors(errors);
         console.log("validate", errors)
 
-        return Object.keys(errors).length == 0
+        return Object.keys(errors).length === 0
     }
 
 
@@ -48,13 +48,9 @@ function Form() {
             text: "Form is submited successfully",
             icon: "success"
         });
-
-        // axios.post("https://httpbin.org/post", inputData)
         axios.post("http://localhost:5000/submit", { ...inputData, yearOfPassing: Number(inputData.yearOfPassing) })
             .then((response) => {
                 console.log(response)
-
-
             })
             .catch((errors) => {
                 Swal.fire({
@@ -64,28 +60,11 @@ function Form() {
                 });
                 console.log(errors);
             });
-
-
         console.log(inputData)
     }
 
     return (
         <div>
-            {/* <div className="banner">
-                <h2 className="banner-text">Become a Member</h2>
-            </div>
-
-            <div className="main-container">
-                <h1>Create Profile</h1>
-            </div>
-            <div className="second_container">
-                <button type="submit" className="create_profile"
-
-                >Create Profile</button>
-                <button type="submit" className="Reports"
-
-                >Reports</button>
-            </div> */}
 
             <form className="container" onSubmit={handleSubmit}>
                 <div className="header">
@@ -152,6 +131,9 @@ function Form() {
                 </div>
 
             </form >
+          
+
+
         </div >
 
     )

@@ -3,7 +3,6 @@ import axios from "axios";
 function Report() {
     const url = "http://localhost:5000/report"
     const [report, setReport] = useState([])
-    let srNo = 1;
     const data = [{
         "id": 16,
         "name": "ABC XYZ",
@@ -31,19 +30,12 @@ function Report() {
         "submission_date": "2024-08-30T08:37:14.153Z"
     }
     ];
-    // let didCancel = false;
+    
     useEffect(() => {
-       
-      
         const fetchData = async () => {
-        //   if (didCancel)
-        //      return;
-      
+        
           try {
             const result = await axios.get(url);
-            // if (!didCancel) {
-            //     setReport(result.data)
-            // }
             if(result!=null)
                 setReport(result.data)
             else
@@ -55,15 +47,12 @@ function Report() {
         };
       
         fetchData();
-      
-        // return () => {
-        //   didCancel = true;
-        // };
+
       }, []);
 
     return (
         <>
-            <table border={1}>
+            <table border={1} className="table">
                 <thead>
                     <tr>
                         <th>Sr.no</th>
@@ -80,7 +69,7 @@ function Report() {
                     </tr>
                 </thead>
                 {
-                    report.map((e, index) => {
+                    data.map((e, index) => {
                         return (
                             <tr>
                                 <td>{index + 1}</td>
