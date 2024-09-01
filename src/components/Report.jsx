@@ -69,7 +69,7 @@ function Report() {
                     </tr>
                 </thead>
                 {
-                    data.map((e, index) => {
+                    report.map((e, index) => {
                         return (
                             <tr>
                                 <td>{index + 1}</td>
